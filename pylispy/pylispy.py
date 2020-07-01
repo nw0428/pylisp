@@ -17,6 +17,18 @@ def cdr(x):
     '''
     return x[1]
 
+def caar(x):
+    return car(car(x))
+
+def cddr(x):
+    return cdr(cdr(x))
+
+def cdar(x):
+    return cdr(car(x))
+
+def cadr(x):
+    return car(cdr(x))
+
 def is_null(x):
     '''
     is_null(null) returns true
