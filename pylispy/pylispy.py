@@ -50,6 +50,16 @@ def is_pair(x):
 # null: Final = ()
 null = ()
 
+def append(x, y):
+    '''
+    Given two PyLispy lists x and y this function concatenates them, with y coming after x
+    '''
+    if not is_pair(x) or not is_pair(y):
+        raise ValueError("Illegal arguments")
+    if is_null(x):
+        return y
+    cons(car(x), append(cdr(x), y))
+
 def ls(*argv):
     '''
     ls(*argv) takes a list of arguments and turns them into a lisp style list of cons cells
