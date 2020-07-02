@@ -29,6 +29,9 @@ def cdar(x):
 def cadr(x):
     return car(cdr(x))
 
+def cdadr(x):
+    return cdr(car(cdr(x)))
+
 def is_null(x):
     '''
     is_null(null) returns true
