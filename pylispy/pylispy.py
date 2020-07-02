@@ -45,7 +45,7 @@ def is_pair(x):
     is_pair(x) returns true if x is a pair/2-tuple/cons cell or null
     if x is anything else it returns false
     '''
-    return is_null(x) or (isinstance(x, tuple) and len(x) == 2)
+    return isinstance(x, tuple) and len(x) == 2
 
 # null: Final = ()
 null = ()
@@ -54,11 +54,12 @@ def append(x, y):
     '''
     Given two PyLispy lists x and y this function concatenates them, with y coming after x
     '''
-    if not is_pair(x) or not is_pair(y):
-        raise ValueError("Illegal arguments")
     if is_null(x):
         return y
-    cons(car(x), append(cdr(x), y))
+    elif not is_pair(x) or not is_pair(y): # This check is probably unnecessary
+        raise ValueError("Illegal arguments")
+    else:
+        return cons(car(x), append(cdr(x), y))
 
 def ls(*argv):
     '''
