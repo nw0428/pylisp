@@ -48,7 +48,10 @@ def is_pair(x):
     return isinstance(x, tuple) and len(x) == 2
 
 # null: Final = ()
-null = ()
+class Null(tuple):
+    autograder = True
+
+null = Null()
 
 def append(x, y):
     '''
@@ -70,6 +73,11 @@ def ls(*argv):
         return null
     else:
         return cons(argv[0], ls(*argv[1:]))
+
+
+# This sets up functions for inclusion in the stackMaps platform
+for f in [cons, car, cdr, is_null, is_pair, append, ls]:
+    f.autograder = True
 
 
 if __name__ == "__main__":
