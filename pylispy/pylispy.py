@@ -90,7 +90,7 @@ def mapp(f, xs):
     return cons(f(car(xs)), map(f, cdr(xs)))
 
 # This sets up functions for inclusion in the stackMaps platform
-for f in [cons, car, cdr, is_null, is_pair, append, ls]:
+for f in [cons, car, cdr, is_null, is_pair, append, ls, foldl, foldr, mapp]:
     f.autograder = True
 
 
