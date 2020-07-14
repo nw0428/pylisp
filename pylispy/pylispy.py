@@ -74,6 +74,20 @@ def ls(*argv):
     else:
         return cons(argv[0], ls(*argv[1:]))
 
+def foldl(f, z, xs):
+    if is_null(xs):
+        return z
+    return foldl(f, f(car(xs), z), cdr(xs))
+
+def foldr(f, z, xs):
+    if is_null(xs):
+        return z
+    return f(car(xs), foldr(f, z, cdr(xs)))
+
+def mapp(f, xs):
+    if is_null(xs):
+        return xs
+    return cons(f(car(xs)), map(f, cdr(xs)))
 
 # This sets up functions for inclusion in the stackMaps platform
 for f in [cons, car, cdr, is_null, is_pair, append, ls]:
